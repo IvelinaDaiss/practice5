@@ -1,41 +1,88 @@
 package cpen221practice;
 
 class DnDCharacter {
+    private int score;//
+    private int modifier;
 
+    //every time this is called it will calculate the points for each one
     int ability() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        int max = 5;
+        int min = 1;
+        int [] rolls = new int[4];
+        int range= max - min + 1;
+        for (int j = 0; j < 4; j++) {
+                int rand = (int) (Math.random() * range) + min;
+                rolls[j] = rand;
+                System.out.println(rand);
+        }
+        int temp = rolls[0];
+        int sum = rolls[0];
+        for (int i = 1;i < rolls.length; i++) {
+           if (rolls[i] < temp){
+               temp = rolls[i];
+           }
+           sum = sum + rolls[i];
+        }
+        score = sum - temp;
+
+        return score;
     }
 
     int modifier(int input) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        //modifier takes constitution
+        double constitution = (double) input;
+        double remainder = (constitution - 10) % 2;
+
+        double _modifier = (constitution - 10) / 2;
+
+        if (_modifier > 0){
+            remainder = -remainder;
+        }
+
+        modifier = (int) (_modifier + remainder/2);
+        return modifier;
     }
 
     int getStrength() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        int strengthScore;
+        strengthScore = ability();//every time i call ability it will return that ability's score
+        return strengthScore;
     }
 
     int getDexterity() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        int dexterityScore;
+        dexterityScore = ability();//every time i call ability it will return that ability's score
+        return dexterityScore;
     }
 
     int getConstitution() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        int constitutionScore;
+        constitutionScore = ability();//every time i call ability it will return that ability's score
+        return constitutionScore;
     }
 
     int getIntelligence() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        int intelligenceScore;
+        intelligenceScore = ability();//every time i call ability it will return that ability's score
+        return intelligenceScore;
     }
 
     int getWisdom() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        int wisdomScore;
+        wisdomScore = ability();//every time i call ability it will return that ability's score
+        return wisdomScore;
     }
 
     int getCharisma() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        int charismaScore;
+        charismaScore = ability();//every time i call ability it will return that ability's score
+        return charismaScore;
     }
 
     int getHitpoints() {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        int hitPoints = 10;
+        hitPoints = hitPoints + modifier;
+        return hitPoints;
     }
 
 }
