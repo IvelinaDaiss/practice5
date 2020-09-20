@@ -1,10 +1,12 @@
 package cpen221practice;
 
 class DnDCharacter {
-    private int score;//
+    private int score;
     private int modifier;
 
     //every time this is called it will calculate the points for each one
+    //but I don't think that's what is asked. I am not supposed to recalculate it.
+    //just do six iterations put into an array, and each method get a result from it's index in the abilityArray?
     int ability() {
         int max = 5;
         int min = 1;
@@ -38,7 +40,7 @@ class DnDCharacter {
         if (_modifier > 0){
             remainder = -remainder;
         }
-
+        //is there a rounding down method?
         modifier = (int) (_modifier + remainder/2);
         return modifier;
     }
@@ -46,7 +48,7 @@ class DnDCharacter {
     int getStrength() {
         int strengthScore;
         strengthScore = ability();//every time i call ability it will return that ability's score
-        return strengthScore;
+        return strengthScore;//how to make sure this calculates only once?
     }
 
     int getDexterity() {
