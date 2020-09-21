@@ -3,10 +3,22 @@ package cpen221practice;
 class DnDCharacter {
     private int score;
     private int modifier;
+    private int constitution;
+    private int[] scoreArray = new int[6];
 
-    //every time this is called it will calculate the points for each one
-    //but I don't think that's what is asked. I am not supposed to recalculate it.
-    //just do six iterations put into an array, and each method get a result from it's index in the abilityArray?
+    /**
+     * Constructor calculates value for DnDCharacter's abilities
+     */
+    public DnDCharacter() {
+        for (int i = 0; i < scoreArray.length; i++) {
+           scoreArray[i] = ability();
+        }
+    }
+
+    /**
+     * Calculates ability score
+     * @return the ability score
+     */
     int ability() {
         int max = 5;
         int min = 1;
@@ -30,8 +42,12 @@ class DnDCharacter {
         return score;
     }
 
+    /**
+     * Calculates constitution modifier for a DnDCharacter
+     * @param input the character constitution
+     * @return
+     */
     int modifier(int input) {
-        //modifier takes constitution
         double constitution = (double) input;
         double remainder = (constitution - 10) % 2;
 
@@ -40,47 +56,62 @@ class DnDCharacter {
         if (_modifier > 0){
             remainder = -remainder;
         }
-        //is there a rounding down method?
         modifier = (int) (_modifier + remainder/2);
         return modifier;
     }
 
+    /**
+     * Returns the strength score for a DnDCharacter
+     * @return the score
+     */
     int getStrength() {
-        int strengthScore;
-        strengthScore = ability();//every time i call ability it will return that ability's score
-        return strengthScore;//how to make sure this calculates only once?
+        return scoreArray[0];
     }
 
+    /**
+     * Returns the dexterity score for a DnDCharacter
+     * @return the score
+     */
     int getDexterity() {
-        int dexterityScore;
-        dexterityScore = ability();//every time i call ability it will return that ability's score
-        return dexterityScore;
+        return scoreArray[1];
     }
 
+    /**
+     * Returns the constitution score for a DnDCharacter
+     * @return the score
+     */
     int getConstitution() {
-        int constitutionScore;
-        constitutionScore = ability();//every time i call ability it will return that ability's score
-        return constitutionScore;
+        return scoreArray[2];
     }
 
+    /**
+     * Returns the intelligence score for a DnDCharacter
+     * @return the score
+     */
     int getIntelligence() {
-        int intelligenceScore;
-        intelligenceScore = ability();//every time i call ability it will return that ability's score
-        return intelligenceScore;
+        return scoreArray[3];
     }
 
+    /**
+     * Returns the wisdom score for a DnDCharacter
+     * @return the score
+     */
     int getWisdom() {
-        int wisdomScore;
-        wisdomScore = ability();//every time i call ability it will return that ability's score
-        return wisdomScore;
+        return scoreArray[4];
     }
 
+    /**
+     * Returns the charisma score for a DnDCharacter
+     * @return the score
+     */
     int getCharisma() {
-        int charismaScore;
-        charismaScore = ability();//every time i call ability it will return that ability's score
-        return charismaScore;
+        return scoreArray[5];
     }
 
+    /**
+     * Calculateds hit points for a DnDCharacter
+     * @return the points
+     */
     int getHitpoints() {
         int hitPoints = 10;
         hitPoints = hitPoints + modifier;

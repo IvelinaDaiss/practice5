@@ -123,8 +123,10 @@ public class DnDCharacterTest {
             assertTrue(character.getIntelligence() > 2 && character.getIntelligence() < 19);
             assertTrue(character.getWisdom() > 2 && character.getWisdom() < 19);
             assertTrue(character.getCharisma() > 2 && character.getCharisma() < 19);
-            assertEquals(character.getHitpoints(),
-                    10 + character.modifier(character.getConstitution()));
+            //assertEquals(character.getHitpoints(),
+                    //10 + character.modifier(character.getConstitution()));
+            assertEquals(character.modifier(character.getConstitution()),
+                        character.getHitpoints() - 10);
         }
     }
 
